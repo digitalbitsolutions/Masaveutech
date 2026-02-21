@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masaveu Tech</title>
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: #e6edf3;
+      background: radial-gradient(circle at 20% 10%, #0a1f3c, #020b19 60%, #01060f);
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+
+    /* ===== HERO ===== */
+    .tagline-small {
+      font-size: 12px;
+      letter-spacing: 2px;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      opacity: 0.6;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 90px;
+      font-weight: 700;
+      margin: 30px 0 10px;
+      background: linear-gradient(120deg, #2b6cff, #ffd43b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 50px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      margin: 60px 0 40px;
+      background: linear-gradient(90deg, transparent, #2b6cff, transparent);
+      opacity: 0.5;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .service {
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+
+    .service-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      opacity: 0.6;
+    }
+
+    /* ===== WHY ===== */
+    .why {
+      max-width: 520px;
+      margin: 0 auto 70px;
+    }
+
+    .why h2 {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+
+    .why p {
+      opacity: 0.7;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* ===== BENEFITS ===== */
+    .benefits {
+      margin-top: 40px;
+      opacity: 0.85;
+    }
+
+    .benefits p {
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .benefits ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .benefits li {
+      margin: 8px 0;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .benefits li::before {
+      content: "✔ ";
+      color: #2b6cff;
+      font-weight: bold;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 100px;
+      opacity: 0.5;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ===== ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 1s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="fade-in">
+      <div class="tagline-small">MASAVEU TECH</div>
+      <div class="hero-title">A new era of<br>digital consulting.</div>
+      <div class="hero-sub">Launching soon.</div>
+
+      <div class="logo">M</div>
+      <div class="brand">MASAVEU TECH</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="services fade-in">
+      <div class="service">
+        <div class="service-title">Digital Product Strategy</div>
+        <div class="service-desc">From discovery to scalable execution.</div>
+      </div>
+
+      <div class="service">
+        <div class="service-title">Growth & Go‑To‑Market</div>
+        <div class="service-desc">Data‑driven, outcome‑focused.</div>
+      </div>
+
+      <div class="service">
+        <div class="service-title">AI & Innovation</div>
+        <div class="service-desc">Building what’s next.</div>
+      </div>
+    </div>
+
+    <div class="why fade-in">
+      <h2>Why the wait?</h2>
+      <p>Because we're not just redesigning a website.</p>
+      <p>We're redefining how digital consulting delivers value.</p>
+      <p>A new positioning. New services.</p>
+      <p>A stronger global vision.</p>
+    </div>
+
+    <div class="benefits fade-in">
+      <p>Masaveu Tech is becoming a boutique partner for companies that want to:</p>
+      <ul>
+        <li>Launch faster</li>
+        <li>Scale smarter</li>
+        <li>Build products that matter</li>
+      </ul>
+    </div>
+
+    <footer>
+      <div>MASAVEU TECH</div>
+      <div>Digital Product · Product Leadership · Growth Strategy</div>
+      <div>© Masaveu Tech</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // ===== FADE IN ON SCROLL =====
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

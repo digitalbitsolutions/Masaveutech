@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE GALLERY | Premium Streetwear Barcelona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        /* Simulación de Druk Wide Bold y Graphik */
+        @import url('https://fonts.cdnfonts.com/css/druk-wide-bold');
+        
+        :root {
+            --color-canvas: #FFFFFF;
+            --color-text: #000000;
+            --color-accent: #E0E0E0;
+            --color-soft-grey: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Fallback para Graphik */
+            background-color: var(--color-canvas);
+            color: var(--color-text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-druk {
+            font-family: 'Druk Wide Bold', sans-serif;
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+        }
+
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-image {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3)), 
+                              url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .btn-minimal {
+            position: relative;
+            border: 1px solid var(--color-text);
+            padding: 1rem 2.5rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .btn-minimal:hover {
+            background-color: var(--color-text);
+            color: var(--color-canvas);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 mix-blend-difference text-white px-6 py-8 md:px-12 flex justify-between items-center transition-all duration-300" id="main-nav">
+        <div class="font-druk text-xl tracking-tighter">THE GALLERY</div>
+        <div class="hidden md:flex space-x-10 text-xs uppercase tracking-widest font-medium">
+            <a href="#" class="hover:opacity-50">Colecciones</a>
+            <a href="#" class="hover:opacity-50">Manifiesto</a>
+            <a href="#" class="hover:opacity-50">Lookbook</a>
+            <a href="#" class="hover:opacity-50">Contacto</a>
+        </div>
+        <div class="text-xs uppercase tracking-widest font-medium">
+            <a href="#" class="hover:opacity-50">Cesta (0)</a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 hero-image"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-druk text-5xl md:text-9xl text-white mb-8 reveal active">
+                ART AS<br>ARMOR.
+            </h1>
+            <div class="reveal active" style="transition-delay: 0.3s">
+                <a href="#shop" class="btn-minimal bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-[0.3em] font-semibold">
+                    Shop Collection
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-[10px] tracking-[0.5em] uppercase animate-bounce">
+            Scroll para explorar
+        </div>
+    </section>
+
+    <!-- 2. Manifiesto de Marca -->
+    <section class="py-32 px-6 md:px-0 bg-white">
+        <div class="max-w-3xl mx-auto text-center reveal">
+            <span class="text-[10px] tracking-[0.4em] uppercase text-gray-400 mb-6 block">Nuestra Esencia</span>
+            <p class="text-2xl md:text-4xl leading-snug font-light text-black">
+                Born in Barcelona. Crafted with <span class="font-semibold italic">100% Peruvian Pima Cotton</span>. A dialogue between global street culture and textile excellence.
+            </p>
+        </div>
+    </section>
+
+    <!-- 3. Colección Destacada (Grid Asimétrico) -->
+    <section id="shop" class="py-20 px-6 md:px-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            
+            <!-- Producto 1 (Grande) -->
+            <div class="md:col-span-7 reveal">
+                <div class="product-card group cursor-pointer overflow-hidden bg-gray-100 mb-6">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=1200" alt="Sudadera Premium" class="w-full h-[700px] object-cover transition-transform duration-700">
+                </div>
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h3 class="font-druk text-2xl uppercase">Graphic Hoodie 01</h3>
+                        <p class="text-xs text-gray-500 font-poppins mt-2 tracking-widest">LIMITED EDITION / BARCELONA SERIES</p>
+                    </div>
+                    <span class="text-lg font-medium">185.00€</span>
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="md:col-span-5 flex flex-col space-y-24 pt-0 md:pt-40">
+                
+                <!-- Producto 2 -->
+                <div class="reveal" style="transition-delay: 0.2s">
+                    <div class="product-card group cursor-pointer overflow-hidden bg-gray-100 mb-6">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800" alt="T-Shirt Algodón Pima" class="w-full h-[500px] object-cover transition-transform duration-700">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="font-druk text-xl uppercase">Essential Tee</h3>
+                            <p class="text-xs text-gray-500 font-poppins mt-2 tracking-widest">100% PERUVIAN PIMA COTTON</p>
+                        </div>
+                        <span class="text-lg font-medium">85.00€</span>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="reveal" style="transition-delay: 0.4s">
+                    <div class="product-card group cursor-pointer overflow-hidden bg-gray-100 mb-6">
+                        <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?auto=format&fit=crop&q=80&w=800" alt="Art Tee" class="w-full h-[500px] object-cover transition-transform duration-700">
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <h3 class="font-druk text-xl uppercase">Art Print 03</h3>
+                            <p class="text-xs text-gray-500 font-poppins mt-2 tracking-widest">COLLABORATION SERIES</p>
+                        </div>
+                        <span class="text-lg font-medium">95.00€</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Lookbook Editorial -->
+    <section class="py-32 bg-black text-white overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="h-[80vh] reveal">
+                <img src="https://images.unsplash.com/photo-1483393458019-411bc6bd104e?auto=format&fit=crop&q=80&w=1200" alt="Barcelona Architecture" class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-1000">
+            </div>
+            <div class="flex flex-col justify-center px-10 md:px-24 py-20 reveal">
+                <h2 class="font-druk text-4xl md:text-6xl mb-8 leading-none">THE URBAN<br>CURATOR.</h2>
+                <p class="font-poppins font-light text-gray-400 text-lg mb-10 italic">
+                    "La arquitectura de Barcelona se funde con la estética de Nueva York. Piezas diseñadas para el movimiento, fabricadas para la posteridad."
+                </p>
+                <a href="#" class="text-xs tracking-[0.5em] uppercase border-b border-white pb-2 w-max hover:opacity-50 transition-opacity">Ver Lookbook 2024</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Calidad del Material -->
+    <section class="py-32 bg-[#F5F5F5]">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <span class="text-[10px] tracking-[0.4em] uppercase text-gray-400 mb-6 block">Materiales Nobles</span>
+                <h2 class="font-druk text-3xl md:text-5xl mb-8">THE GOLD OF<br>THE ANDES.</h2>
+                <p class="font-poppins text-gray-600 leading-relaxed mb-6">
+                    Nuestras prendas están confeccionadas exclusivamente con Algodón Pima Peruano. Conocido mundialmente por su fibra extra larga, este material ofrece una suavidad inigualable y una resistencia que desafía el paso del tiempo.
+                </p>
+                <ul class="text-xs tracking-widest space-y-3 uppercase font-semibold">
+                    <li>• Durabilidad Excepcional</li>
+                    <li>• Brillo Natural Sedoso</li>
+                    <li>• Transpirabilidad Premium</li>
+                </ul>
+            </div>
+            <div class="reveal" style="transition-delay: 0.3s">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=1000" alt="Textura Algodón" class="w-full h-[600px] object-cover shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-10 hidden md:block">
+                        <p class="font-druk text-3xl">100%<br>PIMA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Footer & CTA Final -->
+    <footer class="bg-black text-white pt-32 pb-12 px-6 md:px-12">
+        <div class="text-center mb-32 reveal">
+            <h2 class="font-druk text-5xl md:text-9xl mb-12">OWN THE<br>CANVAS.</h2>
+            <a href="#" class="btn-minimal border-white hover:bg-white hover:text-black uppercase text-xs tracking-[0.3em] font-semibold">
+                Unirse a la Comunidad
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-white/10 pt-12 text-[10px] tracking-[0.3em] uppercase text-gray-500">
+            <div>
+                <h4 class="text-white mb-6">Legal</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="hover:text-white">Privacidad</a></li>
+                    <li><a href="#" class="hover:text-white">Términos</a></li>
+                    <li><a href="#" class="hover:text-white">Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white mb-6">Soporte</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="hover:text-white">Envíos</a></li>
+                    <li><a href="#" class="hover:text-white">Devoluciones</a></li>
+                    <li><a href="#" class="hover:text-white">Tallas</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white mb-6">Social</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="hover:text-white">Instagram</a></li>
+                    <li><a href="#" class="hover:text-white">Behance</a></li>
+                    <li><a href="#" class="hover:text-white">TikTok</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white mb-6">Newsletter</h4>
+                <div class="relative">
+                    <input type="email" placeholder="TU EMAIL" class="bg-transparent border-b border-white/30 w-full py-2 focus:outline-none focus:border-white transition-colors uppercase text-[10px]">
+                    <button class="absolute right-0 top-2 hover:opacity-50">→</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 flex justify-between items-center text-[10px] tracking-widest text-gray-600">
+            <p>© 2024 THE GALLERY BARCELONA. ALL RIGHTS RESERVED.</p>
+            <p>DESIGNED IN BCN / CRAFTED IN PERU</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efecto Reveal al hacer scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Cambio de estilo en Nav al scroll
+        window.addEventListener("scroll", function() {
+            var nav = document.getElementById("main-nav");
+            if (window.scrollY > 50) {
+                nav.classList.add("bg-white/80", "backdrop-blur-md", "text-black", "py-4");
+                nav.classList.remove("mix-blend-difference", "text-white", "py-8");
+            } else {
+                nav.classList.remove("bg-white/80", "backdrop-blur-md", "text-black", "py-4");
+                nav.classList.add("mix-blend-difference", "text-white", "py-8");
+            }
+        });
+
+        // Ejecutar al cargar
+        window.onload = function() {
+            reveal();
+        };
+    </script>
+</body>
+</html>

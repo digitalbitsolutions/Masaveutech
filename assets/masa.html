@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaveu Tech | Digital Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --bg-color: #0a0e14; 
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --accent-blue: #3b82f6;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 100px 20px;
+            text-align: center;
+            opacity: 0; 
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 0.3rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .launch-text {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 60px;
+        }
+
+        /* Logo Section */
+        .logo-box {
+            margin: 60px auto;
+        }
+
+        .main-logo {
+            width: 120px; /* Ajusta el tamaño según prefieras */
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo-box h2 {
+            letter-spacing: 0.4rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 80px 0;
+        }
+
+        /* Services Grid */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .service-card i {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .service-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Why Wait */
+        .why-wait h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .why-wait p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .vision-statement {
+            margin-top: 30px;
+            font-weight: 400;
+            color: var(--text-main) !important;
+        }
+
+        /* Boutique Footer Section */
+        .boutique-section {
+            margin-top: 100px;
+            padding-top: 40px;
+        }
+
+        .boutique-section p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .check-list {
+            list-style: none;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .check-list li {
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .check-list span {
+            color: var(--accent-blue);
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* Footer Bar */
+        footer {
+            width: 100%;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 100px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .footer-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: 20px;
+            }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container" id="mainContent">
+        <section>
+            <p class="subtitle">Masaveu Tech</p>
+            <h1>A new era of <br> digital consulting.</h1>
+            <p class="launch-text">Launching soon.</p>
+            
+            <div class="logo-box">
+                <img src="D:\Meeguel\masaveutech.com\img\logo.webp" alt="Masaveu Tech Logo" class="main-logo">
+                <h2>MASAVEU TECH</h2>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="services">
+            <div class="service-card">
+                <i data-lucide="lightbulb" size="24"></i>
+                <h3>Digital Product Strategy</h3>
+                <p>From discovery to <br> scalable execution.</p>
+            </div>
+            <div class="service-card">
+                <i data-lucide="trending-up" size="24"></i>
+                <h3>Growth & Go-To-Market</h3>
+                <p>Data-driven, <br> outcome-focused.</p>
+            </div>
+            <div class="service-card">
+                <i data-lucide="cpu" size="24"></i>
+                <h3>AI & Innovation</h3>
+                <p>Building <br> what's next.</p>
+            </div>
+        </section>
+
+        <section class="why-wait">
+            <h2>Why the wait?</h2>
+            <p>Because we’re not just redesigning a website.</p>
+            <p>We’re redefining how digital consulting delivers value.</p>
+            <p class="vision-statement">
+                A new positioning. New services.<br>
+                A stronger global vision.
+            </p>
+        </section>
+
+        <section class="boutique-section">
+            <p>Masaveu Tech is becoming a boutique partner for companies that want to:</p>
+            <ul class="check-list">
+                <li><span>✓</span> Launch faster</li>
+                <li><span>✓</span> Scale smarter</li>
+                <li><span>✓</span> Build products that matter</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span style="letter-spacing: 1px;">MASAVEU TECH</span>
+            <nav class="footer-nav">
+                <a href="#">Digital Product</a>
+                <a href="#">Product Leadership</a>
+                <a href="#">Growth Strategy</a>
+            </nav>
+            <span>© Masaveu Tech</span>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Animación de entrada
+        window.addEventListener('DOMContentLoaded', () => {
+            const content = document.getElementById('mainContent');
+            setTimeout(() => {
+                content.classList.add('visible');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
