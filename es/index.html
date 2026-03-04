@@ -97,14 +97,23 @@
             font-size: 12px;
             cursor: pointer;
             border-radius: 4px;
-            opacity: 0.6;
-            transition: opacity 0.3s, background 0.3s, border-color 0.3s;
+            opacity: 0.85;
+            /* Increased for better contrast */
+            transition: opacity 0.3s, background 0.3s, border-color 0.3s, color 0.3s;
         }
 
-        .lang-btn.active,
+        .lang-btn.active {
+            opacity: 1;
+            background: var(--text-main);
+            /* High contrast background */
+            color: #020b19;
+            /* Dark text on light background */
+            border-color: var(--text-main);
+            font-weight: 600;
+        }
+
         .lang-btn:hover {
             opacity: 1;
-            background: var(--accent);
             border-color: var(--accent);
         }
 
@@ -220,7 +229,7 @@
         <button class="lang-btn active" data-lang="en" onclick="window.location.href='../'">EN</button>
         <button class="lang-btn" data-lang="es" onclick="window.location.href='es/'">ES</button>
     </div>
-    <div class="container">
+    <main class="container">
         <div class="fade-in show">
             <div class="hero-title">Una nueva era de<br>consultoría digital.</div>
             <div class="hero-sub">Próximamente.</div>
@@ -256,12 +265,16 @@
                 <li>Crear productos que importen</li>
             </ul>
         </div>
-        <footer>
+    </main>
+
+    <footer>
+        <div class="container"
+            style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 0 24px; max-width: 1100px; margin: 0 auto;">
             <div>MASAVEU TECH</div>
             <div>Digital Product · Product Leadership · Growth Strategy</div>
             <div>© Masaveu Tech</div>
-        </footer>
-    </div>
+        </div>
+    </footer>
     <script src="../js/main.js"></script>
 </body>
 
