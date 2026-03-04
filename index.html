@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,53 +17,53 @@
 </head>
 
 <body>
+  <div class="lang-selector">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
   <div class="container">
 
-    <div class="fade-in">
-      <div class="hero-title">A new era of<br>digital consulting.</div>
-      <div class="hero-sub">Launching soon.</div>
+    <div class="fade-in show">
+      <div class="hero-title" data-i18n="hero_title">A new era of<br>digital consulting.</div>
+      <div class="hero-sub" data-i18n="hero_sub">Launching soon.</div>
 
-      <app-logo
-        src-dev="img/logo.webp"
-        src-prod="img/logo.webp"
-        alt="Masaveu Tech Logo">
-      </app-logo>
+      <img src="img/logo.webp" alt="Masaveu Tech Logo" class="logo-img" width="120" height="80">
 
     </div>
 
     <div class="divider"></div>
 
-    <div class="services fade-in">
+    <div class="services fade-in show">
       <div class="service">
-        <div class="service-title">Digital Product Strategy</div>
-        <div class="service-desc">From discovery to scalable execution.</div>
+        <div class="service-title" data-i18n="service1_title">Digital Product Strategy</div>
+        <div class="service-desc" data-i18n="service1_desc">From discovery to scalable execution.</div>
       </div>
 
       <div class="service">
-        <div class="service-title">Growth & Go-To-Market</div>
-        <div class="service-desc">Data-driven, outcome-focused.</div>
+        <div class="service-title" data-i18n="service2_title">Growth &amp; Go-To-Market</div>
+        <div class="service-desc" data-i18n="service2_desc">Data-driven, outcome-focused.</div>
       </div>
 
       <div class="service">
-        <div class="service-title">AI & Innovation</div>
-        <div class="service-desc">Building what’s next.</div>
+        <div class="service-title" data-i18n="service3_title">AI &amp; Innovation</div>
+        <div class="service-desc" data-i18n="service3_desc">Building what’s next.</div>
       </div>
     </div>
 
     <div class="why fade-in">
-      <h2>Why the wait?</h2>
-      <p>Because we're not just redesigning a website.</p>
-      <p>We're redefining how digital consulting delivers value.</p>
-      <p>A new positioning. New services.</p>
-      <p>A stronger global vision.</p>
+      <h2 data-i18n="why_title">Why the wait?</h2>
+      <p data-i18n="why_p1">Because we're not just redesigning a website.</p>
+      <p data-i18n="why_p2">We're redefining how digital consulting delivers value.</p>
+      <p data-i18n="why_p3">A new positioning. New services.</p>
+      <p data-i18n="why_p4">A stronger global vision.</p>
     </div>
 
     <div class="benefits fade-in">
-      <p>Masaveu Tech is becoming a boutique partner for companies that want to:</p>
+      <p data-i18n="benefits_title">Masaveu Tech is becoming a boutique partner for companies that want to:</p>
       <ul>
-        <li>Launch faster</li>
-        <li>Scale smarter</li>
-        <li>Build products that matter</li>
+        <li data-i18n="benefits_item1">Launch faster</li>
+        <li data-i18n="benefits_item2">Scale smarter</li>
+        <li data-i18n="benefits_item3">Build products that matter</li>
       </ul>
     </div>
 
@@ -77,5 +78,5 @@
   <script src="js/main.js"></script>
 
 </body>
-</html>
 
+</html>
