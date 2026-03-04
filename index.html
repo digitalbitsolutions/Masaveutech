@@ -34,7 +34,10 @@
       color: var(--text-main);
       background: var(--bg-main);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      /* Added to fix footer position */
+      align-items: center;
+      /* Added to keep horizontal centering */
     }
 
     .container {
