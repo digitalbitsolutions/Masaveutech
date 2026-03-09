@@ -66,17 +66,27 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
 
-      - name: Deploy files with rsync
+      - name: Deploy site files
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
         run: |
-          rsync -avz \
-            --exclude-from=".deployignore" \
-            -e "ssh -p $DEPLOY_PORT" \
-            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+          target="$DEPLOY_USER@$DEPLOY_HOST"
+          dest="${DEPLOY_PATH%/}"
+
+          if ssh -p "$DEPLOY_PORT" "$target" "command -v rsync >/dev/null 2>&1"; then
+            rsync -avz \
+              --exclude-from=".deployignore" \
+              -e "ssh -p $DEPLOY_PORT" \
+              ./ "$target:$dest/"
+          else
+            echo "Remote rsync not available. Using tar+ssh fallback."
+            ssh -p "$DEPLOY_PORT" "$target" "mkdir -p \"$dest\""
+            tar -czf - --exclude-from=".deployignore" . \
+              | ssh -p "$DEPLOY_PORT" "$target" "tar -xzf - -C \"$dest\""
+          fi
 
       - name: Remove stale non-public artifacts
         env:
