@@ -84,7 +84,18 @@ jobs:
           else
             echo "Remote rsync not available. Using tar+ssh fallback."
             ssh -p "$DEPLOY_PORT" "$target" "mkdir -p \"$dest\""
-            tar -czf - --exclude-from=".deployignore" . \
+
+            tar_excludes=()
+            while IFS= read -r raw_pattern; do
+              pattern="$(printf '%s' "$raw_pattern" | tr -d '\r')"
+              [ -z "$pattern" ] && continue
+              case "$pattern" in
+                \#*) continue ;;
+              esac
+              tar_excludes+=( "--exclude=$pattern" "--exclude=./$pattern" )
+            done < .deployignore
+
+            tar -czf - "${tar_excludes[@]}" . \
               | ssh -p "$DEPLOY_PORT" "$target" "tar -xzf - -C \"$dest\""
           fi
 
