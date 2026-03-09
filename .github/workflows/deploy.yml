@@ -1,0 +1,85 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate critical files
+        run: |
+          test -f index.html
+          test -f es/index.html
+          test -f robots.txt
+          test -f sitemap.xml
+
+      - name: Load SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+
+      - name: Add server host key
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy files with rsync
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          rsync -avz \
+            --exclude-from=".deployignore" \
+            -e "ssh -p $DEPLOY_PORT" \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+
+      - name: Remove stale non-public artifacts
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          DEST_PATH="${DEPLOY_PATH%/}"
+          ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
+            "rm -rf \"$DEST_PATH/assets\" \"$DEST_PATH/masaveutech.com.zip\""
+
+      - name: Basic smoke checks
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          if [ -z "$SITE_URL" ]; then
+            echo "SITE_URL repo variable is not configured; skipping smoke checks."
+            exit 0
+          fi
+          site="${SITE_URL%/}"
+          curl -fsSI "$site/" >/dev/null
+          curl -fsSI "$site/es/" >/dev/null
+          curl -fsSI "$site/robots.txt" >/dev/null
+          curl -fsSI "$site/sitemap.xml" >/dev/null
+
+          test "$(curl -s -o /dev/null -w "%{http_code}" "$site/index.html")" = "301"
+          test "$(curl -s -o /dev/null -w "%{http_code}" "$site/es/index.html")" = "301"
+
+          assets_status="$(curl -s -o /dev/null -w "%{http_code}" "$site/assets/index.html")"
+          test "$assets_status" = "404" || test "$assets_status" = "410"
+
+          zip_status="$(curl -s -o /dev/null -w "%{http_code}" "$site/masaveutech.com.zip")"
+          test "$zip_status" = "404" || test "$zip_status" = "410"

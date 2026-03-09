@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Masaveu Tech | Page Not Found</title>
+  <style>
+    :root {
+      --bg-main: radial-gradient(circle at 20% 10%, #0a1f3c, #020b19 60%, #01060f);
+      --text-main: #e6edf3;
+      --accent: #2b6cff;
+      --card-bg: rgba(255, 255, 255, 0.03);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-main);
+      color: var(--text-main);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 640px;
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 12px;
+    }
+
+    p {
+      opacity: 0.78;
+      line-height: 1.6;
+    }
+
+    .small {
+      margin-top: 14px;
+      font-size: 14px;
+      opacity: 0.64;
+    }
+
+    .actions {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 10px 16px;
+      border-radius: 8px;
+      transition: 0.2s ease;
+      min-width: 120px;
+    }
+
+    a:hover {
+      border-color: var(--accent);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>Page not found</h1>
+    <p>This URL is no longer available. You can continue in English or Spanish.</p>
+    <p class="small">Esta URL ya no esta disponible. Puedes continuar en ingles o espanol.</p>
+    <div class="actions">
+      <a href="/">English</a>
+      <a href="/es/">Espanol</a>
+    </div>
+  </main>
+
+  <script>
+    const spanishLegacySlugs = new Set([
+      "nuestro-fundador",
+      "servicios-masaveu-tech",
+      "masaveu-tech-nuestro-enfoque",
+      "blog",
+      "contacto",
+      "aviso-legal",
+      "politica-de-privacidad",
+      "politica-de-cookies",
+      "declaracion-de-accesibilidad"
+    ]);
+
+    const pathname = window.location.pathname.toLowerCase();
+    const normalizedPath = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+    const slug = normalizedPath.replace(/^\/+/, "");
+
+    if (normalizedPath === "/en" || normalizedPath.startsWith("/en/")) {
+      window.location.replace("/");
+    } else if (spanishLegacySlugs.has(slug)) {
+      window.location.replace("/es/");
+    }
+  </script>
+</body>
+
+</html>
