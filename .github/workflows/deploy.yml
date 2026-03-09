@@ -108,7 +108,15 @@ jobs:
         run: |
           DEST_PATH="${DEPLOY_PATH%/}"
           ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
-            "rm -rf \"$DEST_PATH/assets\" \"$DEST_PATH/masaveutech.com.zip\""
+            "rm -rf \"$DEST_PATH/assets\" \
+                    \"$DEST_PATH/masaveutech.com.zip\" \
+                    \"$DEST_PATH/.git\" \
+                    \"$DEST_PATH/.github\" \
+                    \"$DEST_PATH/ignore\" \
+                    \"$DEST_PATH/docs\" \
+                    \"$DEST_PATH/nginx\" \
+                    \"$DEST_PATH/scripts\"; \
+             rm -f \"$DEST_PATH/.deployignore\" \"$DEST_PATH/.gitignore\""
 
       - name: Basic smoke checks
         env:
